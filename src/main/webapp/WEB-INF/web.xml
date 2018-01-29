@@ -1,0 +1,44 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <!-- 多种配置出现问题时，可能是因为排序问题导致的 -->
+  
+  <!-- 编码处理过滤器 -->
+    <filter>
+    	<filter-name>Myfilter1</filter-name>
+    	<display-name>Myfilter1</display-name>
+    	<description></description>
+    	<filter-class>com.ch.filter.Myfilter1</filter-class>
+    </filter>  
+	<filter-mapping>
+		<filter-name>Myfilter1</filter-name>
+		<url-pattern>/Myfilter1</url-pattern>
+	</filter-mapping> 
+	
+	<!-- 加载上下文，和下面的配置二选一 -->
+    <!-- <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param> -->
+	
+ <!--configure the setting of springmvcDispatcherServlet and configure the mapping-->
+ <!--Sprig MVC分发URL配置-->
+	<servlet>
+	    <!-- 寻找servlet-mapping变量名称，进行拦截分发 -->
+	    <servlet-name>Spring-mvc</servlet-name>
+	    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	    	<!-- 加载上下文 -->
+	   		<init-param>
+	          <param-name>contextConfigLocation</param-name>
+	          <param-value>classpath:Spring-mvc-servlet.xml</param-value>
+	     	</init-param>
+	      <!-- <load-on-startup>1</load-on-startup> -->
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>Spring-mvc</servlet-name>
+	    <url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>
