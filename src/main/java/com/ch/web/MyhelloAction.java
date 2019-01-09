@@ -32,7 +32,7 @@ public class MyhelloAction {
 	
 	//�����߼������ת�������߼������ 
 	@Autowired
-	private MyService myService;
+	MyService myService;
 	
 	//1
 	//�������ҳ�����
